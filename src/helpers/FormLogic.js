@@ -12,6 +12,10 @@ const FormLogic =()=>{
             bussiness_phone:'',
             bussiness_category:'',
             account_number:'',
+            house_number:"",
+            street:"",
+            city:"",
+            state:""
      })
 
      const handleChange = (e) => {

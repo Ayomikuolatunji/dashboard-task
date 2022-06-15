@@ -103,7 +103,7 @@ const SignupInformation = ({formStep,nextFormStep}) => {
                  />
                  {/* file */}
                  <div className='border-2 mt-9 border-gray-100'>
-                    <div className='w-full px-16 py-10 flex justify-center flex-col items-center'>
+                    <div className='w-full sm:px-16  py-10 flex justify-center flex-col items-center'>
                         <AiOutlineCloudDownload 
                           className='text-[#039BF0] text-[80px] mb-6'
                         />
@@ -129,8 +129,8 @@ const SignupInformation = ({formStep,nextFormStep}) => {
                  </div>
                 <div className="submit-btn mt-6 w-full flex items-center">
                     <button 
-                    className='px-8 border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
-                     py-[10px] w-[200px] text-2xl'
+                    className='border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
+                     py-[10px] sm:w-[200px] w-[150px] text-2xl'
                      type='submit'
                        onClick={nextFormStep}
                      >
