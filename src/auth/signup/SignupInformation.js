@@ -1,7 +1,7 @@
-import axios from 'axios'
-import React, { useCallback, useState } from 'react'
-import {FiEye} from "react-icons/fi"
+import React from 'react'
 import { Link } from 'react-router-dom'
+import {AiOutlineCloudDownload} from "react-icons/ai"
+import {FiPaperclip} from "react-icons/fi"
 import FormLogic from '../../helpers/FormLogic'
 import Logo from "../../assets/LOGO.png"
 import InputDiv from '../../utils/InputDiv'
@@ -10,16 +10,12 @@ import SelectDiv from '../../utils/SelectDiv'
 
 
 
-const SignupInformation = () => {
+const SignupInformation = ({formStep,nextFormStep}) => {
    const {form,handleChange}=FormLogic() 
-   const [loading, setLoading] = useState(false)
-   const [passwordVisible, setPasswordVisible] = useState(false)
-   const [error, setError] = useState('')
-
 
   return (
-    <div className='bg-[#E5E5E5] h-[100vh] w-full flex justify-center'>
-    <div className='sm:w-[80%] h-[100vh] w-full mx-auto'>
+    <div className='bg-[#E5E5E5] h-[auto] w-full flex justify-center'>
+    <div className='sm:w-[80%] w-full mx-auto'>
         <div className="header sm:pt-16 pt-10 sm:px-0 px-4 flex justify-between items-center">
             <div className="title">
                 <img src={Logo} alt="logo" 
@@ -42,7 +38,7 @@ const SignupInformation = () => {
                 </div>
             </div>
         </div>
-         <div className='flex justify-center items-center w-full '>
+         <div className='flex justify-center items-center w-full mt-24 mb-12'>
         {/* form inner container */}
         <div className='bg-[#FFFFFF] rounded-[8px]  sm:max-w-lg w-[90%] p-5'>
             {/* form header */}
@@ -105,18 +101,44 @@ const SignupInformation = () => {
                     type={'number'}
                     name='account_no'
                  />
-                <div className="submit-btn mt-6">
+                 {/* file */}
+                 <div className='border-2 mt-9 border-gray-100'>
+                    <div className='w-full px-16 py-10 flex justify-center flex-col items-center'>
+                        <AiOutlineCloudDownload 
+                          className='text-[#039BF0] text-[80px] mb-6'
+                        />
+                        <p className='mb-5'>
+                          Drag here or click the button below to upload
+                        </p>
+                        <label htmlFor="fileUpload"
+                           className='bg-[#039BF0] py-[4px] px-[12px] text-white mb-5 cursor-pointer'
+                          >
+                              <FiPaperclip className='inline text-[white]
+                              mr-4'/>
+                              Choose file
+                              <input 
+                                type="file" 
+                                className='hidden'
+                                id='fileUpload'
+                              />
+                        </label>
+                        <p>
+                          Maximum upload size: 10MB (.jpg)
+                        </p>
+                    </div>
+                 </div>
+                <div className="submit-btn mt-6 w-full flex items-center">
                     <button 
-                    className='w-full p-2 border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
-                     py-[16px]'
-                     type='submit'>
-                         {
-                            loading ?
-                                <span>please wait..</span>
-                            :
-                            <span> Sign In</span>
-                         }
+                    className='px-8 border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
+                     py-[10px] w-[200px] text-2xl'
+                     type='submit'
+                       onClick={nextFormStep}
+                     >
+                        next
                     </button>
+                    <p className='ml-2'>
+                       Step  {formStep} of 2
+                    </p>
                 </div>
             </form>
         </div>

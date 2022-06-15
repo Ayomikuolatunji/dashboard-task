@@ -1,7 +1,151 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import {AiOutlineCloudDownload} from "react-icons/ai"
+import {FiPaperclip} from "react-icons/fi"
+import FormLogic from '../../helpers/FormLogic'
+import Logo from "../../assets/LOGO.png"
+import InputDiv from '../../utils/InputDiv'
+import SelectDiv from '../../utils/SelectDiv'
 
-export const SignupAddress = () => {
+
+
+
+const SignupAddress = ({formStep,nextFormStep}) => {
+   const {form,handleChange}=FormLogic() 
+
   return (
-    <div>SignupAddress</div>
+    <div className='bg-[#E5E5E5] h-[auto] w-full flex justify-center'>
+    <div className='sm:w-[80%] w-full mx-auto'>
+        <div className="header sm:pt-16 pt-10 sm:px-0 px-4 flex justify-between items-center">
+            <div className="title">
+                <img src={Logo} alt="logo" 
+                  className='sm:w-[100px] w-[100px]'
+                />
+            </div>
+            <div className="right-bar flex items-center">
+                <div>
+                    <span className='text-[#606060] font-[inter]'>
+                      New to Xpress Rewards?
+                    </span>
+                </div>
+                <div className="link ml-2">
+                    <Link to="/register">
+                        <button 
+                        className='border-2 border-[#039BF0] text-[#039BF0] font-[inter] font-[700] px-3 py-2 rounded-lg  hover:bg-[#039BF0] hover:text-[#fff]'>
+                          Register
+                        </button>
+                    </Link>
+                </div>
+            </div>
+        </div>
+         <div className='flex justify-center items-center w-full mt-24 mb-12'>
+        {/* form inner container */}
+        <div className='bg-[#FFFFFF] rounded-[8px]  sm:max-w-lg w-[90%] p-5'>
+            {/* form header */}
+            <div className='block h-auto mt-9 mb-12  border-b-2 border-gray-200 pb-6'>
+                <h2 className='text-[#039BF0] font-[500] text-[24px] leading-[29px] font-[inter]'>
+                Welcome to Xpress Rewards
+                </h2>
+                <p className='text-[#606060] text-[14px] mt-2 font-[400] font-[inter]'>
+                   Complete the form below to get started
+                </p>
+            </div>
+            <div className="title text-[#039BF0] font-[500] text-[24px] leading-[29px] font-[inter]">
+                <h1>
+                  Business Information
+                </h1>
+            </div>
+            {/* form body */}
+            <form action="POST">
+                {/* bussiness name */}
+                <InputDiv
+                    handleChange={handleChange}
+                    value={form.bussiness_name}
+                    label='Business Name'
+                    type={'text'}
+                    name='bussiness_name'
+                />
+                {/* business name container ends here */}
+               
+                {/* business email */}
+                <InputDiv
+                    handleChange={handleChange}
+                    value={form.bussiness_email}
+                    label='Business Email Address'
+                    type={'email'}
+                    name='bussiness_email'
+                />
+                {/* business email container ends here */}
+
+                {/* business phone */}
+                <InputDiv
+                    handleChange={handleChange}
+                    value={form.bussiness_phone}
+                    label='Business Phone Number'
+                    type={'phone'}
+                    name='bussiness_phone'
+                />
+                {/* business category */}
+                <SelectDiv
+                    handleChange={handleChange} 
+                    value={form.bussiness_category}
+                    options={['Restaurant','Bar','Cafe','Other']}
+                    name='bussiness_category'
+                    label='Business Category'
+                />
+                {/* account no */}
+                <InputDiv
+                    handleChange={handleChange}
+                    value={form.account_no}
+                    label='Account No'
+                    type={'number'}
+                    name='account_no'
+                 />
+                 {/* file */}
+                 <div className='border-2 mt-9 border-gray-100'>
+                    <div className='w-full px-16 py-10 flex justify-center flex-col items-center'>
+                        <AiOutlineCloudDownload 
+                          className='text-[#039BF0] text-[80px] mb-6'
+                        />
+                        <p className='mb-5'>
+                          Drag here or click the button below to upload
+                        </p>
+                        <label htmlFor="fileUpload"
+                           className='bg-[#039BF0] py-[4px] px-[12px] text-white mb-5 cursor-pointer'
+                          >
+                              <FiPaperclip className='inline text-[white]
+                              mr-4'/>
+                              Choose file
+                              <input 
+                                type="file" 
+                                className='hidden'
+                                id='fileUpload'
+                              />
+                        </label>
+                        <p>
+                          Maximum upload size: 10MB (.jpg)
+                        </p>
+                    </div>
+                 </div>
+                <div className="submit-btn mt-6 w-full flex items-center">
+                    <button 
+                    className='px-8 border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
+                     py-[10px] w-[200px] text-2xl'
+                     type='submit'
+                       onClick={nextFormStep}
+                     >
+                        next
+                    </button>
+                    <p className='ml-2'>
+                       Step  {formStep} of 2
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+     </div>
+    </div>
   )
 }
+
+export default SignupAddress

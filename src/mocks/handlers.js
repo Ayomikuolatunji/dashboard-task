@@ -26,3 +26,18 @@ export const Loginhandlers = [
     )
   }),
 ]
+
+export const signupHandlers=[
+   rest.post("/signup",(req,res,ctx)=>{
+    const {business_name, business_category,business_email, account_name,business_phone }=req.body
+       return res(
+        ctx.json({
+            business_name,
+            business_email,
+            business_category,
+            business_phone,
+            account_name
+        })
+       )
+   })
+]

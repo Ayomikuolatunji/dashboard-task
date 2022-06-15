@@ -5,13 +5,13 @@ import { useState } from "react"
 
 const FormLogic =()=>{
      const [form, setForm] = useState({
-        email: '',
-        password: '',
-        bussiness_name: '',
-        bussiness_email:'',
-        bussiness_phone:'',
-        bussiness_category:'',
-        account_number:'',
+            email: '',
+            password: '',
+            bussiness_name: '',
+            bussiness_email:'',
+            bussiness_phone:'',
+            bussiness_category:'',
+            account_number:'',
      })
 
      const handleChange = (e) => {

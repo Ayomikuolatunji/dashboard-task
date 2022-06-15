@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { SignupAddress } from './SignupAddress';
+import SignupAddress  from './SignupAddress';
 import SignupInformation from './SignupInformation';
 import SignupWrapper from './SignupWrapper';
 
 const Signup = () => {
-    const [formStep, setFormStep] = useState(0);
+    const [formStep, setFormStep] = useState(1);
     
  const nextFormStep = () => setFormStep((currentStep) => currentStep + 1)
 
@@ -12,14 +12,16 @@ const Signup = () => {
   return (
         <SignupWrapper>
                {
-                  formStep === 0 && 
+                  formStep === 1 && 
                   (<SignupInformation 
+                        formStep={formStep}
                         nextFormStep={nextFormStep} 
                   />)
                }
                {
-                  formStep === 1 &&
+                  formStep ===2 &&
                    (<SignupAddress 
+                        formStep={formStep}
                         nextFormStep={nextFormStep} 
                         prevFormStep={prevFormStep} 
                    />)
