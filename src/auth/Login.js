@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useCallback } from 'react'
 import {FiEye} from "react-icons/fi"
 import FormLogic from '../helpers/FormLogic'
 
@@ -7,13 +8,23 @@ import FormLogic from '../helpers/FormLogic'
 
 const Login = () => {
    const {form,handleChange}=FormLogic() 
-   const [passwordVisible, setPasswordVisible] = React.useState(false)
+//    const [passwordVisible, setPasswordVisible] = React.useState(false)
+    
 
-
-   const loginSubmitBtn=()=>{
-        console.log(form)
-   }
-
+   const loginSubmitBtn=useCallback(e=>{
+        e.preventDefault()
+        axios.post('/login',{
+            email:form.email,
+            password:form.password
+        })
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+        
+   },[form])
 
 
   return (
@@ -28,7 +39,7 @@ const Login = () => {
                 </p>
             </div>
             {/* form body */}
-            <form action="post" onSubmit={loginSubmitBtn}>
+            <form action="POST" onSubmit={loginSubmitBtn}>
                 {/* email */}
                 <div className='mb-6'>
                     <label htmlFor='email' className='text-sm text-[#1A1619]'>
