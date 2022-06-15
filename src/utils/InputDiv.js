@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InputDiv = ({handleChange,form,label,name}) => {
+const InputDiv = ({handleChange,value,label,name}) => {
   return (
     <div className='mt-6'>
         <label htmlFor="businessName" 
@@ -14,7 +14,7 @@ const InputDiv = ({handleChange,form,label,name}) => {
             className='w-full p-4 border border-gray-200 rounded-[5px] bg-[#FFFFFF] mt-3'
             placeholder="Enter your business name"
             onChange={handleChange}
-            value={form.bussiness_name}
+            value={value}
             required
             />
         </div>   

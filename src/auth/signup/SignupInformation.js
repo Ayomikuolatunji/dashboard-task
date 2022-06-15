@@ -63,7 +63,7 @@ const SignupInformation = () => {
                 {/* bussiness name */}
                 <InputDiv
                     handleChange={handleChange}
-                    form={form}
+                    value={form.bussiness_name}
                     label='Business Name'
                     name='bussiness_name'
                 />
@@ -72,9 +72,18 @@ const SignupInformation = () => {
                 {/* business email */}
                 <InputDiv
                     handleChange={handleChange}
-                    form={form}
+                    value={form.bussiness_email}
                     label='Business Email Address'
                     name='bussiness_email'
+                />
+                {/* business email container ends here */}
+
+                {/* business phone */}
+                <InputDiv
+                    handleChange={handleChange}
+                    form={form.bussiness_phone}
+                    label='Business Phone Number'
+                    name='bussiness_phone'
                 />
                 <div className="submit-btn mt-6">
                     <button 
