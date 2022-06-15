@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import FormLogic from '../../helpers/FormLogic'
 import Logo from "../../assets/LOGO.png"
 import InputDiv from '../../utils/InputDiv'
+import SelectDiv from '../../utils/SelectDiv'
 
 
 
@@ -17,8 +18,8 @@ const SignupInformation = () => {
 
 
   return (
-    <div className='bg-[#E5E5E5] h-[100vh]'>
-    <div className='sm:w-[80%] h-[inherent] w-full mx-auto'>
+    <div className='bg-[#E5E5E5] h-[100vh] w-full flex justify-center'>
+    <div className='sm:w-[80%] h-[100vh] w-full mx-auto'>
         <div className="header sm:pt-16 pt-10 sm:px-0 px-4 flex justify-between items-center">
             <div className="title">
                 <img src={Logo} alt="logo" 
@@ -41,7 +42,7 @@ const SignupInformation = () => {
                 </div>
             </div>
         </div>
-         <div className='flex justify-center items-center  w-full h-[80vh]'>
+         <div className='flex justify-center items-center w-full '>
         {/* form inner container */}
         <div className='bg-[#FFFFFF] rounded-[8px]  sm:max-w-lg w-[90%] p-5'>
             {/* form header */}
@@ -65,6 +66,7 @@ const SignupInformation = () => {
                     handleChange={handleChange}
                     value={form.bussiness_name}
                     label='Business Name'
+                    type={'text'}
                     name='bussiness_name'
                 />
                 {/* business name container ends here */}
@@ -74,6 +76,7 @@ const SignupInformation = () => {
                     handleChange={handleChange}
                     value={form.bussiness_email}
                     label='Business Email Address'
+                    type={'email'}
                     name='bussiness_email'
                 />
                 {/* business email container ends here */}
@@ -81,10 +84,27 @@ const SignupInformation = () => {
                 {/* business phone */}
                 <InputDiv
                     handleChange={handleChange}
-                    form={form.bussiness_phone}
+                    value={form.bussiness_phone}
                     label='Business Phone Number'
+                    type={'phone'}
                     name='bussiness_phone'
                 />
+                {/* business category */}
+                <SelectDiv
+                    handleChange={handleChange} 
+                    value={form.bussiness_category}
+                    options={['Restaurant','Bar','Cafe','Other']}
+                    name='bussiness_category'
+                    label='Business Category'
+                />
+                {/* account no */}
+                <InputDiv
+                    handleChange={handleChange}
+                    value={form.account_no}
+                    label='Account No'
+                    type={'number'}
+                    name='account_no'
+                 />
                 <div className="submit-btn mt-6">
                     <button 
                     className='w-full p-2 border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
