@@ -1,34 +1,61 @@
 import axios from 'axios'
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import {FiEye} from "react-icons/fi"
+import { Link } from 'react-router-dom'
 import FormLogic from '../helpers/FormLogic'
+import Logo from "../assets/LOGO.png"
 
 
 
 
 const Login = () => {
    const {form,handleChange}=FormLogic() 
-//    const [passwordVisible, setPasswordVisible] = React.useState(false)
+   const [passwordVisible, setPasswordVisible] = useState(false)
     
 
-   const loginSubmitBtn=useCallback(e=>{
+   const loginSubmitBtn=useCallback(async(e)=>{
         e.preventDefault()
-        axios.post('/login',{
+       try {
+        const response=await axios.post('/login',{
             email:form.email,
             password:form.password
         })
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
+          if(response.status===200){
+            window.sessionStorage.setItem("key", response.data.token);
+            //  redirect user to homapage after successful login
+            window.location.href = '/';
+          }
+       } catch (error) {
+              console.log(error)
+       }
+        
         
    },[form])
 
 
   return (
-    <div className='bg-[#E5E5E5] w-full h-screen flex justify-center items-center'>
+    <div className='bg-[#E5E5E5] h-[100vh]'>
+    <div className='sm:w-[80%] h-[inherent] w-full mx-auto'>
+        <div className="header pt-16 sm:px-0 px-4">
+            <div className="title">
+                <img src={Logo} alt="logo" 
+                  className='sm:w-[100px] w-[100px]'
+                />
+            </div>
+            <div className="right-bar">
+                <div>
+                    <span>
+                      New to Xpress Rewards?
+                    </span>
+                </div>
+                <div className="link">
+                    <Link to="/register">
+                        Register
+                    </Link>
+                </div>
+            </div>
+        </div>
+         <div className='flex justify-center items-center  w-full h-[80vh]'>
         {/* form inner container */}
         <div className='bg-[#FFFFFF] rounded-[8px]  sm:max-w-md w-[90%] p-5'>
             {/* form header */}
@@ -60,7 +87,7 @@ const Login = () => {
                         Password
                     </label>
                     <input
-                        type='password'
+                        type={passwordVisible ? 'text' : 'password'}
                         id='password'
                         className='w-full p-2 border border-gray-200 rounded-[5px] bg-[#FFFFFF] mt-3'
                         name='password'
@@ -68,7 +95,19 @@ const Login = () => {
                         onChange={handleChange}
                     />
                      {/* eye icons */}
-                     <FiEye className='absolute top-[60%] text-xl z-50 right-[10px] cursor-pointer'/>
+                     <FiEye 
+                     className='absolute top-[60%] text-xl z-50 right-[10px]'
+                        onClick={()=>setPasswordVisible(!passwordVisible)}
+                     />
+                </div>
+                <div className="forgot-password mt-4">
+                    <span className='text-sm text-[#606060] text-[14px] font-[400] font-[inter]'>
+                        Forgot Password?
+                    </span>
+                    <Link to={"/reset"} 
+                    className="ml-3 text-[#039BF0] font-[500]">
+                        Reset it
+                    </Link>
                 </div>
                 <div className="submit-btn mt-6">
                     <button 
@@ -80,6 +119,8 @@ const Login = () => {
                 </div>
             </form>
         </div>
+    </div>
+     </div>
     </div>
   )
 }
