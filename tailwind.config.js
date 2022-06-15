@@ -10,6 +10,7 @@ module.exports = {
       },
       boxShadow: {
         'login-btn-shadow': '0px 2px 8px rgba(0, 0, 0, 0.15)',
+        'signup-input-shadow': ' 0px 4px 10px rgba(0, 0, 0, 0.06)',
       }
     }
   },

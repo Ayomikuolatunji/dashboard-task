@@ -1,14 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: 0,
+  sigupData: {},
 }
 
 export const signupSlice = createSlice({
-  name: 'counter',
+  name: 'signupData',
   initialState,
   reducers: {
-   
+       getSignupData: (state, action) => {
+        state.sigupData = {
+            ...state.sigupData,
+            ...action.payload
+        }
+       }
   },
 })
 
