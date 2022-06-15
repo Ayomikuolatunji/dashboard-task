@@ -4,6 +4,7 @@ import {FiEye} from "react-icons/fi"
 import { Link } from 'react-router-dom'
 import FormLogic from '../../helpers/FormLogic'
 import Logo from "../../assets/LOGO.png"
+import InputDiv from '../../utils/InputDiv'
 
 
 
@@ -13,30 +14,6 @@ const SignupInformation = () => {
    const [loading, setLoading] = useState(false)
    const [passwordVisible, setPasswordVisible] = useState(false)
    const [error, setError] = useState('')
-    
-
-   const loginSubmitBtn=useCallback(async(e)=>{
-         setLoading(true)
-        e.preventDefault()
-       try {
-        const response=await axios.post('/login',{
-            email:form.email,
-            password:form.password
-        })
-          if(response.status===200){
-            window.sessionStorage.setItem("key", response.data.token);
-            setLoading(false)
-            //  redirect user to homapage after successful login
-            window.location.href = '/';
-          }
-       } catch (error) {
-            setLoading(false)
-            setError(error.response.data.message)
-            console.log(error)
-       }
-        
-        
-   },[form])
 
 
   return (
@@ -82,28 +59,23 @@ const SignupInformation = () => {
                 </h1>
             </div>
             {/* form body */}
-            <form action="POST" onSubmit={loginSubmitBtn}>
+            <form action="POST">
                 {/* bussiness name */}
-                <div className='mt-6'>
-                    <label htmlFor="businessName" 
-                     className='text-sm text-[#1A1619]'
-                    >
-                        Business Name
-                    </label>
-                    <input
-                        type="text"
-                        name="bussiness_name"
-                        id="businessName"
-                        className='w-full p-2 border border-gray-200 rounded-[5px] bg-[#FFFFFF] mt-3'
-                        placeholder="Enter your business name"
-                        onChange={handleChange}
-                        value={form.bussiness_name}
-                        required
-                     />
-                 </div>   
+                <InputDiv
+                    handleChange={handleChange}
+                    form={form}
+                    label='Business Name'
+                    name='bussiness_name'
+                />
+                {/* business name container ends here */}
                
-                {/* display error */}
-                {error && <div className='text-red-500 text-sm font-[400] font-[inter] mt-10'>{error}</div>}
+                {/* business email */}
+                <InputDiv
+                    handleChange={handleChange}
+                    form={form}
+                    label='Business Email Address'
+                    name='bussiness_email'
+                />
                 <div className="submit-btn mt-6">
                     <button 
                     className='w-full p-2 border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
