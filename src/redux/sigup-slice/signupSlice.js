@@ -18,4 +18,6 @@ export const signupSlice = createSlice({
 })
 
 
+export const { getSignupData } = signupSlice.actions
+
 export default signupSlice.reducer

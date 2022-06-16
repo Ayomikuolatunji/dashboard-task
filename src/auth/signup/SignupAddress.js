@@ -1,18 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {FiPaperclip} from "react-icons/fi"
 import FormLogic from '../../helpers/FormLogic'
 import Logo from "../../assets/LOGO.png"
-import InputDiv from '../../utils/InputDiv'
-import SelectDiv from '../../utils/SelectDiv'
 import BusinessInfo from './BusinessInfo'
 import ContactInformation from './ContactInformation'
+import { useDispatch } from 'react-redux'
+import { getSignupData } from '../../redux/sigup-slice/signupSlice'
 
 
 
 
 const SignupAddress = ({formStep,nextFormStep}) => {
+  const dispatch = useDispatch()
    const {form,handleChange}=FormLogic() 
+
+    
+   const handleNext = (e) => {
+      e.preventDefault()
+      nextFormStep()
+      if(formStep === 1){
+        dispatch(getSignupData({
+           
+        }))
+      }
+   }
+
 
   return (
     <div className='bg-[#E5E5E5] h-[auto] w-full flex justify-center'>
@@ -60,11 +72,11 @@ const SignupAddress = ({formStep,nextFormStep}) => {
             <form action="POST">
                 {/* house number and street*/}
                  <BusinessInfo form={form} handleChange={handleChange}/>
-                 <div className="title text-[#039BF0] font-[500] text-[24px] leading-[29px] font-[inter] mb-[10px] mt-10">
+                  <div className="title text-[#039BF0] font-[500] text-[24px] leading-[29px] font-[inter] mb-[10px] mt-10">
                         <h1>
-                        Business Address
+                          Business Address
                         </h1>
-                 </div>
+                  </div>
                  {/* contact information */}
                  <ContactInformation
                    form={form}
