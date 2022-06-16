@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  sigupData: {},
+  signupData: {},
 }
 
 export const signupSlice = createSlice({
@@ -9,8 +9,8 @@ export const signupSlice = createSlice({
   initialState,
   reducers: {
        getSignupData: (state, action) => {
-        state.sigupData = {
-            ...state.sigupData,
+        state.signupData = {
+            ...state.signupData,
             ...action.payload
         }
        }

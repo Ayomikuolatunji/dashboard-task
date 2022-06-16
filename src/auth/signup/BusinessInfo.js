@@ -51,6 +51,7 @@ const BusinessInfo = ({form,handleChange}) => {
                               value={form.state}
                               onChange={handleChange}
                         >
+                              <option value="">Select State</option>
                               <option value="lagos">lagos</option>
                               <option value="ogun">ogun</option>
                            </select>

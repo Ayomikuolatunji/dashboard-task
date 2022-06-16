@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {AiOutlineCloudDownload} from "react-icons/ai"
 import {FiPaperclip} from "react-icons/fi"
@@ -13,13 +13,19 @@ import { getSignupData } from '../../redux/sigup-slice/signupSlice'
 
 
 const SignupInformation = ({formStep,nextFormStep}) => {
+  const [file,setFile]=useState(null)
   const dispatch = useDispatch()
    const {form,handleChange}=FormLogic() 
 
 
+   const handleFile=(event)=>{
+    setFile(event.target.files[0])
+   }
+
+
     const handleNext = (e) => {
         // check if bussiness_name, bussiness_email, bussiness_phone, bussiness_category, account_number are empty
-        if(form.bussiness_name === "" || form.bussiness_email === "" || form.bussiness_phone === "" || form.bussiness_category === "" || form.account_number === ""){
+        if(form.bussiness_name === "" || form.bussiness_email === "" || form.bussiness_phone === "" || form.bussiness_category === "" || form.account_number === "" || file === null){
           alert("Please fill all the fields")
           return
         }
@@ -31,7 +37,8 @@ const SignupInformation = ({formStep,nextFormStep}) => {
               bussiness_email:form.bussiness_email,
               bussiness_phone:form.bussiness_phone,
               bussiness_category:form.bussiness_category,
-              account_number:form.account_number
+              account_number:form.account_number,
+              file:file
           }))
         }
     }
@@ -112,7 +119,7 @@ const SignupInformation = ({formStep,nextFormStep}) => {
                 <SelectDiv
                     handleChange={handleChange} 
                     value={form.bussiness_category}
-                    options={['Restaurant','Bar','Cafe','Other']}
+                    options={["Select Business",'Business A','Business B','Business C']}
                     name='bussiness_category'
                     label='Business Category'
                 />
@@ -143,10 +150,11 @@ const SignupInformation = ({formStep,nextFormStep}) => {
                                 type="file" 
                                 className='hidden'
                                 id='fileUpload'
+                                onChange={handleFile}
                               />
                         </label>
                         <p>
-                          Maximum upload size: 10MB (.jpg)
+                         {file ? file.name :  "Maximum upload size: 10MB (.jpg)"}
                         </p>
                     </div>
                  </div>

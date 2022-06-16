@@ -10,7 +10,7 @@ import { getSignupData } from '../../redux/sigup-slice/signupSlice'
 
 
 
-const SignupAddress = ({formStep}) => {
+const SignupAddress = ({formStep,submitForm}) => {
   const dispatch = useDispatch()
    const {form,handleChange}=FormLogic() 
 
@@ -32,6 +32,8 @@ const SignupAddress = ({formStep}) => {
             contact_email:form.contact_email
         }))
       }
+      // submit form
+      submitForm()
    }
 
 

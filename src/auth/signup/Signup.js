@@ -7,47 +7,38 @@ import SignupWrapper from './SignupWrapper';
 
 const Signup = () => {
     const [formStep, setFormStep] = useState(1);
-    const signupData =useSelector(state=>state.signupData)
+    const signupData =useSelector(state=>state.signupData.signupData)
     console.log(signupData)
 
-   const  {
-      business_name,
-      business_email,
-      business_category,
-      business_phone,
-      account_name,
-      house_number,
-      street,
-      city,
-      state,
-      contact_name,
-      contact_phone,
-      contact_email
-  } =signupData.signupData
     
    const nextFormStep = () => setFormStep((currentStep) => currentStep + 1)
 
-   const prevFormStep = () => setFormStep((currentStep) => currentStep - 1)
+//    const prevFormStep = () => setFormStep((currentStep) => currentStep - 1)
    
 
    const submitForm =useCallback(async()=>{
       try {
             const response=await axios.post("/signup",{
-                  business_name,
-                  business_email,
-                  business_category,
-                  business_phone,
-                  account_name,
-                  house_number,
-                  street,
-                  city,
-                  state,
-                  contact_name,
-                  contact_phone,
-                  contact_email
+                  business_name:signupData.business_name,
+                  business_email:signupData.business_email,
+                  business_category:signupData.business_category,
+                  business_phone:signupData.business_phone,
+                  account_name:signupData.account_name,
+                  house_number:signupData.house_number,
+                  street:signupData.street,
+                  city:signupData.city,
+                  state:signupData.state,
+                  contact_name:signupData.contact_name,
+                  contact_phone:signupData.contact_phone,
+                  contact_email:signupData.contact_email
            })
+           if(response.status===200){
+               console.log("success")
+               console.log(response.data)
+           }
       } catch (error) {
-            
+            // console.log( error data)
+            console.log(error.response.data)
       }
      
    },[signupData])
@@ -65,7 +56,7 @@ const Signup = () => {
                    (<SignupAddress 
                         formStep={formStep}
                         nextFormStep={nextFormStep} 
-                        prevFormStep={prevFormStep} 
+                        submitForm={submitForm}
                    />)
                }
         </SignupWrapper>
