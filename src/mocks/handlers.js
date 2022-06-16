@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 
 
-function makeid() {
+function tokenGenerator() {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -18,7 +18,7 @@ export const Loginhandlers = [
 
     return res(
       ctx.json({
-        token: makeid(),
+        token: tokenGenerator(),
         password,
         email,
 
