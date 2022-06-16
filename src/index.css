@@ -15,3 +15,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.nav-items:nth-child(1) {
+   border-left: 2px solid #039BF0;
+}
+
+.nav-items:nth-child(2):hover{
+   border-left: 2px solid #039BF0;
+}
+.nav-items:nth-child(3):hover{
+   border-left: 2px solid #039BF0;
+}

@@ -11,7 +11,7 @@ import Main from "./pages/main";
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div className="w-full">
         <Routes>
           <Route element={<DashboardLayouts/>}>
             <Route path="/" element={<Main/>} />
