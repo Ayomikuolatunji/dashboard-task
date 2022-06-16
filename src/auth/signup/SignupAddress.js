@@ -5,6 +5,8 @@ import FormLogic from '../../helpers/FormLogic'
 import Logo from "../../assets/LOGO.png"
 import InputDiv from '../../utils/InputDiv'
 import SelectDiv from '../../utils/SelectDiv'
+import BusinessInfo from './BusinessInfo'
+import ContactInformation from './ContactInformation'
 
 
 
@@ -13,7 +15,7 @@ const SignupAddress = ({formStep,nextFormStep}) => {
    const {form,handleChange}=FormLogic() 
 
   return (
-    <div className='bg-[#E5E5E5] h-[100vh] w-full flex justify-center'>
+    <div className='bg-[#E5E5E5] h-[auto] w-full flex justify-center'>
     <div className='sm:w-[80%] w-full mx-auto'>
         <div className="header sm:pt-16 pt-10 sm:px-0 px-4 flex justify-between items-center">
             <div className="title">
@@ -57,7 +59,17 @@ const SignupAddress = ({formStep,nextFormStep}) => {
             {/* form body */}
             <form action="POST">
                 {/* house number and street*/}
-               
+                 <BusinessInfo form={form} handleChange={handleChange}/>
+                 <div className="title text-[#039BF0] font-[500] text-[24px] leading-[29px] font-[inter] mb-[10px] mt-10">
+                        <h1>
+                        Business Address
+                        </h1>
+                 </div>
+                 {/* contact information */}
+                 <ContactInformation
+                   form={form}
+                   handleChange={handleChange}
+                 />
                 <div className="submit-btn mt-6 w-full flex items-center">
                     <button 
                     className='px-8 border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow

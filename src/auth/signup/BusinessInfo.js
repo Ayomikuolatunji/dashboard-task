@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BusinessInfo = () => {
+const BusinessInfo = ({form,handleChange}) => {
   return (
     <div>
          <div className='w-full flex justify-between'>
@@ -10,6 +10,9 @@ const BusinessInfo = () => {
                            <input 
                             type="text" 
                             className='w-full p-4 border border-gray-200 rounded-[5px] bg-[#FFFFFF] mt-3'
+                            name="house_number"
+                            value={form.house_number}
+                            handleChange={handleChange}
                            />
                         </label>
                      </div>
@@ -19,6 +22,9 @@ const BusinessInfo = () => {
                            <input 
                              type="text" 
                              className='w-full p-4 border border-gray-200 rounded-[5px] bg-[#FFFFFF] mt-3'
+                               name="street"
+                               value={form.street}
+                               handleChange={handleChange}
                            />
                         </label>
                      </div>
@@ -30,6 +36,9 @@ const BusinessInfo = () => {
                            <input 
                             type="text" 
                             className='w-full p-4 border border-gray-200 rounded-[5px] bg-[#FFFFFF] mt-3'
+                              name="city"
+                              value={form.city}
+                              handleChange={handleChange}
                            />
                         </label>
                      </div>
@@ -37,7 +46,11 @@ const BusinessInfo = () => {
                         <label htmlFor="house-rent">
                             State
                         </label>
-                        <select name="city" id="city" className='w-full p-4 bg-[white] border border-gray-200'>
+                        <select id="city" className='w-full p-4 bg-[white] border border-gray-200'
+                              name="state"
+                              value={form.state}
+                              handleChange={handleChange}
+                        >
                               <option value="lagos">lagos</option>
                               <option value="ogun">ogun</option>
                            </select>
