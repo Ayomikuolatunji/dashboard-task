@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import {AiOutlineCloudDownload} from "react-icons/ai"
 import {FiPaperclip} from "react-icons/fi"
 import FormLogic from '../../helpers/FormLogic'
-import Logo from "../../assets/LOGO.png"
 import InputDiv from '../../utils/InputDiv'
 import SelectDiv from '../../utils/SelectDiv'
-import { useDispatch } from 'react-redux'
 import { getSignupData } from '../../redux/sigup-slice/signupSlice'
 
 
@@ -24,12 +22,12 @@ const SignupInformation = ({formStep,nextFormStep}) => {
 
 
     const handleNext = (e) => {
+        e.preventDefault()
         // check if bussiness_name, bussiness_email, bussiness_phone, bussiness_category, account_number are empty
         if(form.bussiness_name === "" || form.bussiness_email === "" || form.bussiness_phone === "" || form.bussiness_category === "" || form.account_number === "" || file === null){
           alert("Please fill all the fields")
           return
         }
-        e.preventDefault()
         nextFormStep()
         if(formStep === 1){
           dispatch(getSignupData({
@@ -44,30 +42,7 @@ const SignupInformation = ({formStep,nextFormStep}) => {
     }
 
   return (
-    <div className='bg-[#E5E5E5] h-[auto] w-full flex justify-center'>
-    <div className='sm:w-[80%] w-full mx-auto'>
-        <div className="header sm:pt-16 pt-10 sm:px-0 px-4 flex justify-between items-center">
-            <div className="title">
-                <img src={Logo} alt="logo" 
-                  className='sm:w-[100px] w-[100px]'
-                />
-            </div>
-            <div className="right-bar flex items-center">
-                <div>
-                    <span className='text-[#606060] font-[inter]'>
-                      New to Xpress Rewards?
-                    </span>
-                </div>
-                <div className="link ml-2">
-                    <Link to="/register">
-                        <button 
-                        className='border-2 border-[#039BF0] text-[#039BF0] font-[inter] font-[700] px-3 py-2 rounded-lg  hover:bg-[#039BF0] hover:text-[#fff]'>
-                          Register
-                        </button>
-                    </Link>
-                </div>
-            </div>
-        </div>
+       
          <div className='flex justify-center items-center w-full mt-24 mb-12'>
         {/* form inner container */}
         <div className='bg-[#FFFFFF] rounded-[8px]  sm:max-w-lg w-[90%] p-5'>
@@ -86,7 +61,7 @@ const SignupInformation = ({formStep,nextFormStep}) => {
                 </h1>
             </div>
             {/* form body */}
-            <form action="POST">
+            <div className='form-container'>
                 {/* bussiness name */}
                 <InputDiv
                     handleChange={handleChange}
@@ -171,10 +146,8 @@ const SignupInformation = ({formStep,nextFormStep}) => {
                        Step  {formStep} of 2
                     </p>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
-     </div>
     </div>
   )
 }

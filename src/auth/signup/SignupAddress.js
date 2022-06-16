@@ -1,28 +1,34 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import FormLogic from '../../helpers/FormLogic'
-import Logo from "../../assets/LOGO.png"
 import BusinessInfo from './BusinessInfo'
 import ContactInformation from './ContactInformation'
 import { useDispatch } from 'react-redux'
 import { getSignupData } from '../../redux/sigup-slice/signupSlice'
+import InputDiv from '../../utils/InputDiv'
+import { FiEye } from 'react-icons/fi'
 
 
 
 
 const SignupAddress = ({formStep,submitForm}) => {
+  const [passwordVisible, setPasswordVisible] = useState(false)
   const dispatch = useDispatch()
-   const {form,handleChange}=FormLogic() 
+  const {form,handleChange}=FormLogic() 
 
     
    const handleNext = (e) => {
+    e.preventDefault()
       // check if house_number, street, city, state, contact_name, contact_phone, contact_email are empty
       if(form.house_number === "" || form.street === "" || form.city === "" || form.state === "" || form.contact_name === "" || form.contact_phone === "" || form.contact_email === ""){
         alert("Please fill all the fields")
       }
-      e.preventDefault()
+      //  check if password and confirm password are equal
+      if(form.password !== form.confirm_password){
+        alert("Password and confirm password are not equal")
+      }
       if(formStep === 2){
         dispatch(getSignupData({
+            password:form.password,
             house_number:form.house_number,
             street:form.street,
             city:form.city,
@@ -38,31 +44,8 @@ const SignupAddress = ({formStep,submitForm}) => {
 
 
   return (
-    <div className='bg-[#E5E5E5] h-[auto] w-full flex justify-center'>
-    <div className='sm:w-[80%] w-full mx-auto'>
-        <div className="header sm:pt-16 pt-10 sm:px-0 px-4 flex justify-between items-center">
-            <div className="title">
-                <img src={Logo} alt="logo" 
-                  className='sm:w-[100px] w-[100px]'
-                />
-            </div>
-            <div className="right-bar flex items-center">
-                <div>
-                    <span className='text-[#606060] font-[inter]'>
-                      New to Xpress Rewards?
-                    </span>
-                </div>
-                <div className="link ml-2">
-                    <Link to="/register">
-                        <button 
-                        className='border-2 border-[#039BF0] text-[#039BF0] font-[inter] font-[700] px-3 py-2 rounded-lg  hover:bg-[#039BF0] hover:text-[#fff]'>
-                          Register
-                        </button>
-                    </Link>
-                </div>
-            </div>
-        </div>
-         <div className='flex justify-center items-center w-full mt-24 mb-12'>
+  
+      <div className='flex justify-center items-center w-full mt-24 mb-12'>
 
         {/* form inner container */}
         <div className='bg-[#FFFFFF] rounded-[8px]  sm:max-w-lg w-[90%] p-5'>
@@ -84,7 +67,7 @@ const SignupAddress = ({formStep,submitForm}) => {
             </div>
 
             {/* form body */}
-            <form action="POST">
+            <div className='form-container'>
                 {/* house number and street*/}
                  <BusinessInfo form={form} handleChange={handleChange}/>
 
@@ -99,6 +82,52 @@ const SignupAddress = ({formStep,submitForm}) => {
                    form={form}
                    handleChange={handleChange}
                  />
+
+                {/* password */}
+
+                <div className="title text-[#039BF0] font-[500] text-[24px] leading-[29px] font-[inter] mb-[10px] mt-10">
+                        <h1>
+                            Password
+                        </h1>
+                  </div>
+
+                  {/* main password */}
+                 <div className='relative'>
+
+                    <InputDiv
+                        label="Password"
+                        name="password"
+                        type="password"
+                        handleChange={handleChange}
+                        value={form.password}
+                      />
+                    {/* eye icons */}
+                    <FiEye 
+                        className='absolute top-[60%] text-xl z-50 right-[10px]'
+                            onClick={()=>setPasswordVisible(!passwordVisible)}
+                      />
+
+                 </div>
+                   {/* main password */}
+                <div className='relative mt-3'>
+                      <label htmlFor='password' className='text-sm text-[#1A1619]'>
+                          Confirm Password
+                      </label>
+                      <input
+                          className='w-full p-4 border border-gray-200 rounded-[5px] bg-[#FFFFFF] mt-3'
+                          name="confirm_password"
+                          type={passwordVisible ? 'text' : 'password'}
+                          onChange={handleChange}
+                          value={form.confirm_password}
+                        />
+                      {/* eye icons */}
+                      <FiEye 
+                          className='absolute top-[60%] text-xl z-50 right-[10px]'
+                              onClick={()=>setPasswordVisible(!passwordVisible)}
+                        />
+                        
+                  </div>
+
                 <div className="submit-btn mt-6 w-full flex items-center">
                     <button 
                     className='px-8 border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
@@ -112,10 +141,8 @@ const SignupAddress = ({formStep,submitForm}) => {
                        Step  {formStep} of 2
                     </p>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
-     </div>
     </div>
   )
 }

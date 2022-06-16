@@ -7,6 +7,7 @@ const FormLogic =()=>{
      const [form, setForm] = useState({
         email: '',
         password: '',
+        confirm_password: '',
         bussiness_name: '',
         bussiness_email:'',
         bussiness_phone:'',
