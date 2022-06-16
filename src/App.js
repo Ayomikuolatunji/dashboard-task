@@ -9,6 +9,18 @@ import Verifier from "./pages/Verifier";
 
 
 function App() {
+  // redirect to login page route if token does not exit in localstorage
+  if(!sessionStorage.getItem("token")){
+     return <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+     </Router>
+  }
+
+
+  
   return (
     <Router>
       <div className="w-full">
@@ -16,7 +28,6 @@ function App() {
           <Route element={<DashboardLayouts/>}>
             <Route path="/" element={<Verifier/>} />
           </Route>
-          <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Signup/>} />
         </Routes>
       </div>

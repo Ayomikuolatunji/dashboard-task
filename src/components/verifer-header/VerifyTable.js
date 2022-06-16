@@ -11,29 +11,29 @@ const VerifyTable = () => {
 
   return (
     <div className='mt-10'>
-         <div className="relative overflow-x-auto shadow-md">
+         <div className="relative overflow-x-auto shadow-xl">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-white dark:bg-gray-700 dark:text-gray-400 border-b-2 border-t-2 border-t-gray-50">
                 <tr>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-4">
                         First Name
                     </th>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-4">
                         Last Name
                     </th>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-4">
                        Phone Number
                     </th>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-4">
                        Partner
                     </th>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-4">
                         Location
                     </th>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-4">
                       Status
                     </th>
-                    <th  scope="col" className="px-6 py-3">
+                    <th  scope="col" className="px-6 py-4">
                        Actions
                     </th>
                 </tr>  

@@ -24,7 +24,7 @@ const Login = () => {
             password:form.password
         })
           if(response.status===200){
-            window.sessionStorage.setItem("key", response.data.token);
+            window.sessionStorage.setItem("token", response.data.token);
             setLoading(false)
             //  redirect user to homapage after successful login
             window.location.href = '/';
