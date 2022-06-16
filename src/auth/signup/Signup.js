@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import SignupAddress  from './SignupAddress';
 import SignupInformation from './SignupInformation';
 import SignupWrapper from './SignupWrapper';
 
 const Signup = () => {
     const [formStep, setFormStep] = useState(1);
+    const signupData =useSelector(state=>state.signupData.signupData)
+    console.log(signupData)
     
  const nextFormStep = () => setFormStep((currentStep) => currentStep + 1)
 

@@ -6,12 +6,34 @@ import FormLogic from '../../helpers/FormLogic'
 import Logo from "../../assets/LOGO.png"
 import InputDiv from '../../utils/InputDiv'
 import SelectDiv from '../../utils/SelectDiv'
+import { useDispatch } from 'react-redux'
+import { getSignupData } from '../../redux/sigup-slice/signupSlice'
 
 
 
 
 const SignupInformation = ({formStep,nextFormStep}) => {
+  const dispatch = useDispatch()
    const {form,handleChange}=FormLogic() 
+
+
+    const handleNext = (e) => {
+        // check if bussiness_name, bussiness_email, bussiness_phone, bussiness_category, account_number are empty
+        if(form.bussiness_name === "" || form.bussiness_email === "" || form.bussiness_phone === "" || form.bussiness_category === "" || form.account_number === ""){
+          alert("Please fill all the fields")
+        }
+        e.preventDefault()
+        nextFormStep()
+        if(formStep === 2){
+          dispatch(getSignupData({
+              bussiness_name:form.bussiness_name,
+              bussiness_email:form.bussiness_email,
+              bussiness_phone:form.bussiness_phone,
+              bussiness_category:form.bussiness_category,
+              account_number:form.account_number
+          }))
+        }
+    }
 
   return (
     <div className='bg-[#E5E5E5] h-[auto] w-full flex justify-center'>
