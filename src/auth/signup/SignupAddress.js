@@ -16,11 +16,21 @@ const SignupAddress = ({formStep,nextFormStep}) => {
 
     
    const handleNext = (e) => {
+      // check if house_number, street, city, state, contact_name, contact_phone, contact_email are empty
+      if(form.house_number === "" || form.street === "" || form.city === "" || form.state === "" || form.contact_name === "" || form.contact_phone === "" || form.contact_email === ""){
+        alert("Please fill all the fields")
+      }
       e.preventDefault()
       nextFormStep()
       if(formStep === 1){
         dispatch(getSignupData({
-           
+            house_number:form.house_number,
+            street:form.street,
+            city:form.city,
+            state:form.state,
+            contact_name:form.contact_name,
+            contact_phone:form.contact_phone,
+            contact_email:form.contact_email
         }))
       }
    }
@@ -87,6 +97,7 @@ const SignupAddress = ({formStep,nextFormStep}) => {
                     className='px-8 border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
                      py-[10px] w-[200px] text-2xl'
                      type='submit'
+                      onClick={handleNext}
                      >
                         Submit
                     </button>
