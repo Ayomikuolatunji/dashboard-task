@@ -6,7 +6,7 @@ import SignupWrapper from './SignupWrapper';
 
 const Signup = () => {
     const [formStep, setFormStep] = useState(1);
-    const signupData =useSelector(state=>state.signupData.signupData)
+    const signupData =useSelector(state=>state.signupData)
     console.log(signupData)
     
    const nextFormStep = () => setFormStep((currentStep) => currentStep + 1)

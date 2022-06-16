@@ -10,7 +10,7 @@ import { getSignupData } from '../../redux/sigup-slice/signupSlice'
 
 
 
-const SignupAddress = ({formStep,nextFormStep}) => {
+const SignupAddress = ({formStep}) => {
   const dispatch = useDispatch()
    const {form,handleChange}=FormLogic() 
 
@@ -21,8 +21,7 @@ const SignupAddress = ({formStep,nextFormStep}) => {
         alert("Please fill all the fields")
       }
       e.preventDefault()
-      nextFormStep()
-      if(formStep === 1){
+      if(formStep === 2){
         dispatch(getSignupData({
             house_number:form.house_number,
             street:form.street,
@@ -62,8 +61,10 @@ const SignupAddress = ({formStep,nextFormStep}) => {
             </div>
         </div>
          <div className='flex justify-center items-center w-full mt-24 mb-12'>
+
         {/* form inner container */}
         <div className='bg-[#FFFFFF] rounded-[8px]  sm:max-w-lg w-[90%] p-5'>
+
             {/* form header */}
             <div className='block h-auto mt-9 mb-12  border-b-2 border-gray-200 pb-6'>
                 <h2 className='text-[#039BF0] font-[500] text-[24px] leading-[29px] font-[inter]'>
@@ -73,20 +74,24 @@ const SignupAddress = ({formStep,nextFormStep}) => {
                    Complete the form below to get started
                 </p>
             </div>
+
             <div className="title text-[#039BF0] font-[500] text-[24px] leading-[29px] font-[inter] mb-[16px]">
                 <h1>
                   Business Address
                 </h1>
             </div>
+
             {/* form body */}
             <form action="POST">
                 {/* house number and street*/}
                  <BusinessInfo form={form} handleChange={handleChange}/>
+
                   <div className="title text-[#039BF0] font-[500] text-[24px] leading-[29px] font-[inter] mb-[10px] mt-10">
                         <h1>
                           Business Address
                         </h1>
                   </div>
+
                  {/* contact information */}
                  <ContactInformation
                    form={form}

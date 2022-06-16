@@ -5,7 +5,7 @@ const ContactInformation = ({form,handleChange}) => {
   return (
     <div className='w-full'>
        <InputDiv
-         label={"Contact_name"}
+          label={"Contact_name"}
           name={"contact_name"}
           value={form.contact_name}
           handleChange={handleChange}          

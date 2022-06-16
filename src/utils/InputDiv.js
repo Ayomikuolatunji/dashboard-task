@@ -15,7 +15,6 @@ const InputDiv = ({handleChange,value,label,name,type}) => {
             placeholder="Enter your business name"
             onChange={handleChange}
             value={value}
-            required
             />
         </div>   
   )

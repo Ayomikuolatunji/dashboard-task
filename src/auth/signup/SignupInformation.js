@@ -19,11 +19,12 @@ const SignupInformation = ({formStep,nextFormStep}) => {
 
     const handleNext = (e) => {
         // check if bussiness_name, bussiness_email, bussiness_phone, bussiness_category, account_number are empty
-        // if(form.bussiness_name === "" || form.bussiness_email === "" || form.bussiness_phone === "" || form.bussiness_category === "" || form.account_number === ""){
-        //   alert("Please fill all the fields")
-        // }
+        if(form.bussiness_name === "" || form.bussiness_email === "" || form.bussiness_phone === "" || form.bussiness_category === "" || form.account_number === ""){
+          alert("Please fill all the fields")
+          return
+        }
         e.preventDefault()
-        // nextFormStep()
+        nextFormStep()
         if(formStep === 1){
           dispatch(getSignupData({
               bussiness_name:form.bussiness_name,
@@ -33,7 +34,6 @@ const SignupInformation = ({formStep,nextFormStep}) => {
               account_number:form.account_number
           }))
         }
-        console.log(form)
     }
 
   return (
@@ -119,10 +119,10 @@ const SignupInformation = ({formStep,nextFormStep}) => {
                 {/* account no */}
                 <InputDiv
                     handleChange={handleChange}
-                    value={form.account_no}
+                    value={form.account_number}
                     label='Account No'
                     type={'number'}
-                    name='account_no'
+                    name='account_number'
                  />
                  {/* file */}
                  <div className='border-2 mt-9 border-gray-100'>
