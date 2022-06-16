@@ -6,15 +6,15 @@ import {AiFillTags} from "react-icons/ai"
 export const sideBarItems = [
     {
         name: 'Verify',
-        icon: <RiGroupFill/>,
+        icon: <RiGroupFill className="text-xl"/>,
         path: '/',
     },{
         name: 'Deals',
-        icon: <AiFillTags/>,
+        icon: <AiFillTags className="text-xl"/>,
         path: '/deals',
     },{
         name: 'Transactions',
-        icon: <FaMoneyBill/>,
+        icon: <FaMoneyBill className="text-xl"/>,
         path: '/transactions',
     }
 ]

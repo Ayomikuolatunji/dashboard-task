@@ -27,3 +27,19 @@ code {
 .nav-items:nth-child(3):hover{
    border-left: 2px solid #039BF0;
 }
+
+
+.active-status{
+  background: rgba(39, 167, 19, 0.1);
+  border-radius: 8px;
+}
+
+.deactivate-status {
+  background: rgba(255, 153, 0, 0.1);
+  border-radius: 8px;
+}
+
+.pending{
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: 8px;
+}

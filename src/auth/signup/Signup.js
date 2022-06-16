@@ -38,7 +38,7 @@ const Signup = () => {
                console.log("success")
                console.log(response.data)
             // redirect to login page
-              window.location.href = '/';    
+              window.location.href = '/login';    
            }
       } catch (error) {
             // console.log( error data)

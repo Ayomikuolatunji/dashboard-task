@@ -21,12 +21,14 @@ const SignupAddress = ({formStep,submitForm}) => {
       // check if house_number, street, city, state, contact_name, contact_phone, contact_email are empty
       if(form.house_number === "" || form.street === "" || form.city === "" || form.state === "" || form.contact_name === "" || form.contact_phone === "" || form.contact_email === ""){
         alert("Please fill all the fields")
+        return
       }
       //  check if password and confirm password are equal
       if(form.password !== form.confirm_password){
         alert("Password and confirm password are not equal")
+        return
       }
-      if(formStep === 2){
+      // dispatch the form data to the redux store
         dispatch(getSignupData({
             password:form.password,
             house_number:form.house_number,
@@ -37,7 +39,6 @@ const SignupAddress = ({formStep,submitForm}) => {
             contact_phone:form.contact_phone,
             contact_email:form.contact_email
         }))
-      }
       // submit form
       submitForm()
    }

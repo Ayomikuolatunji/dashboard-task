@@ -3,7 +3,7 @@ import {BsFillBellFill} from "react-icons/bs";
 import proFilePicture from "../../assets/Profile-Picture.png"
 const Header = () => {
   return (
-    <div className='flex p-8 bg-[#FFFFFF] border-b-2 w-[100%] border-b-gray-100  justify-between items-center top-0 left-0 right-0 sticky'>
+    <div className='flex p-8 bg-[#FFFFFF] border-b-2 w-[100%] border-b-gray-100  justify-between items-center top-0 left-0 right-0 sticky z-50'>
         <div className="left-content flex items-center">
             <h1 className='text-[#1A1619] text-[24px] font-[700]'>Verifiers</h1>
             <span className='bg-[#e7f3fa] px-3 py-2 ml-3 rounded-[100%] text-[12px] text-[#039BF0] font-extrabold'>
