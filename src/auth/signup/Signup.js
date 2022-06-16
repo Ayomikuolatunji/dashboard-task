@@ -9,9 +9,12 @@ const Signup = () => {
     const signupData =useSelector(state=>state.signupData.signupData)
     console.log(signupData)
     
- const nextFormStep = () => setFormStep((currentStep) => currentStep + 1)
+   const nextFormStep = () => setFormStep((currentStep) => currentStep + 1)
 
- const prevFormStep = () => setFormStep((currentStep) => currentStep - 1)
+   const prevFormStep = () => setFormStep((currentStep) => currentStep - 1)
+
+
+
   return (
         <SignupWrapper>
                {

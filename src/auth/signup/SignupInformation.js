@@ -19,12 +19,12 @@ const SignupInformation = ({formStep,nextFormStep}) => {
 
     const handleNext = (e) => {
         // check if bussiness_name, bussiness_email, bussiness_phone, bussiness_category, account_number are empty
-        if(form.bussiness_name === "" || form.bussiness_email === "" || form.bussiness_phone === "" || form.bussiness_category === "" || form.account_number === ""){
-          alert("Please fill all the fields")
-        }
+        // if(form.bussiness_name === "" || form.bussiness_email === "" || form.bussiness_phone === "" || form.bussiness_category === "" || form.account_number === ""){
+        //   alert("Please fill all the fields")
+        // }
         e.preventDefault()
-        nextFormStep()
-        if(formStep === 2){
+        // nextFormStep()
+        if(formStep === 1){
           dispatch(getSignupData({
               bussiness_name:form.bussiness_name,
               bussiness_email:form.bussiness_email,
@@ -33,6 +33,7 @@ const SignupInformation = ({formStep,nextFormStep}) => {
               account_number:form.account_number
           }))
         }
+        console.log(form)
     }
 
   return (
@@ -154,7 +155,7 @@ const SignupInformation = ({formStep,nextFormStep}) => {
                     className='border border-gray-200 rounded-[5px] bg-[#039BF0] mt-3 text-[#FFFFFF] font-[Rubik] shadow-login-btn-shadow
                      py-[10px] sm:w-[200px] w-[150px] text-2xl'
                      type='submit'
-                       onClick={nextFormStep}
+                       onClick={handleNext}
                      >
                         next
                     </button>
