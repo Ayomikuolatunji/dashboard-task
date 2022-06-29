@@ -4,6 +4,7 @@ import {FiEye} from "react-icons/fi"
 import { Link } from 'react-router-dom'
 import FormLogic from '../../helpers/FormLogic'
 import Logo from "../../assets/LOGO.png"
+import cookieService from '../cookieService'
 
 
 
@@ -23,9 +24,16 @@ const Login = () => {
             email:form.email,
             password:form.password
         })
+        const options={"maxAge":86400,"path":"/"}
           if(response.status===200){
             window.sessionStorage.setItem("token", response.data.token);
             setLoading(false)
+            cookieService.set(
+                "token",
+                response.data.token,
+                 options
+            )
+
             //  redirect user to homapage after successful login
             window.location.href = '/';
           }

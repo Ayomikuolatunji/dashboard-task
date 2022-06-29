@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react'
 import {useNavigate} from 'react-router-dom';
+import cookieService from '../cookieService';
 
 const Logout = () => {
     const navigate = useNavigate();
  
     const logout=useCallback(async(e)=>{
-         if(sessionStorage.getItem("token")){
+         if(sessionStorage.getItem("token") && cookieService.get("token")){
              sessionStorage.removeItem("token")
              window.location.reload()
              navigate("/")

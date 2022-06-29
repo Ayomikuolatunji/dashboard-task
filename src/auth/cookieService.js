@@ -13,7 +13,11 @@ class CookiesClass{
     set(key,value,options){
         cookies.set(key,value,options);
     }
-    
+
+    remove(key){
+        cookies.remove(key);
+    }
+
 }
 
 export default new CookiesClass();
