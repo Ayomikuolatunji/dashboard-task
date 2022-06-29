@@ -6,7 +6,7 @@ const Logout = () => {
     const navigate = useNavigate();
  
     const logout=useCallback(async(e)=>{
-         if(sessionStorage.getItem("token") && cookieService.get("token")){
+         if(sessionStorage.getItem("token") || cookieService.get("token")){
              sessionStorage.removeItem("token")
              window.location.reload()
              navigate("/")
