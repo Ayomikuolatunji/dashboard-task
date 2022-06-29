@@ -11,7 +11,7 @@ import Verifier from "./pages/Verifier";
 
 function App() {
   // redirect to login page route if token does not exit in localstorage
-  if(!sessionStorage.getItem("token") || !cookieService.get("token")){
+  if(!localStorage.getItem("token") || !cookieService.get("token")){
      return <Router>
       <Routes>
         <Route path="/" element={<Login />} />

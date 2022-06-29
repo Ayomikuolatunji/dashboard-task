@@ -26,7 +26,7 @@ const Login = () => {
         })
         const options={"maxAge":86400,"path":"/"}
           if(response.status===200){
-            window.sessionStorage.setItem("token", response.data.token);
+            window.localStorage.setItem("token", response.data.token);
             setLoading(false)
             cookieService.set(
                 "token",
