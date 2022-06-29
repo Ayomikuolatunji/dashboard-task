@@ -1,6 +1,11 @@
 import React from 'react'
 import {BsFillBellFill} from "react-icons/bs";
 import proFilePicture from "../../assets/Profile-Picture.png"
+import Logout from '../../auth/logout/Logout';
+
+
+
+
 const Header = () => {
   return (
     <div className='flex p-8 bg-[#FFFFFF] border-b-2 w-[100%] border-b-gray-100  justify-between items-center top-0 left-0 right-0 sticky z-50'>
@@ -30,6 +35,8 @@ const Header = () => {
 
                 </select>
              </div>
+             {/*logout  */}
+             < Logout />
             </div>
         </div>
   )

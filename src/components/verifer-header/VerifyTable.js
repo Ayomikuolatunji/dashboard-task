@@ -41,9 +41,9 @@ const VerifyTable = () => {
         
             <tbody>
             {
-                 tableData.map(item=>{
+                 tableData.map((item,index)=>{
                      return (
-                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={index}>
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                    {item.first_name}
                                 </th>
