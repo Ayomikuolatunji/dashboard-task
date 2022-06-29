@@ -30,7 +30,7 @@ const Login = () => {
             setLoading(false)
             cookieService.set(
                 "token",
-                response.data.token,
+                 response.data.token,
                  options
             )
 
